@@ -18,14 +18,15 @@ func String(v interface{}) (string, error) {
 	}
 }
 
-func MustString(v interface{}) (string, error) {
+// MustString is like String, expect panic()s on an error.
+func MustString(v interface{}) string {
 
 	x, err := String(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type stringer interface {

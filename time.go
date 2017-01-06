@@ -16,14 +16,15 @@ func Time(v interface{}) (time.Time, error) {
 	}
 }
 
-func MustTime(v interface{}) (time.Time, error) {
+// MustTime is like Time, expect panic()s on an error.
+func MustTime(v interface{}) time.Time {
 
 	x, err := Time(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type timer interface {

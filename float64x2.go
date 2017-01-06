@@ -14,14 +14,15 @@ func Float64x2(v interface{}) ([2]float64, error) {
 	}
 }
 
-func MustFloat64x2(v interface{}) ([2]float64, error) {
+// Float64x2 is like Float64x2, expect panic()s on an error.
+func MustFloat64x2(v interface{}) [2]float64 {
 
 	x, err := Float64x2(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type float64x2er interface {

@@ -20,14 +20,15 @@ func Float32(v interface{}) (float32, error) {
 	}
 }
 
-func MustFloat32(v interface{}) (float32, error) {
+// MustFloat32 is like Float32, expect panic()s on an error.
+func MustFloat32(v interface{}) float32 {
 
 	x, err := Float32(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type float32er interface {

@@ -12,14 +12,15 @@ func Int8(v interface{}) (int8, error) {
 	}
 }
 
-func MustInt8(v interface{}) (int8, error) {
+// MustInt8 is like Int8, expect panic()s on an error.
+func MustInt8(v interface{}) int8 {
 
 	x, err := Int8(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type int8er interface {

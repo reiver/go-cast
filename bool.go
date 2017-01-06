@@ -12,14 +12,15 @@ func Bool(v interface{}) (bool, error) {
 	}
 }
 
-func MustBool(v interface{}) (bool, error) {
+// MustBool is like Bool, expect panic()s on an error.
+func MustBool(v interface{}) bool {
 
 	x, err := Bool(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type booler interface {

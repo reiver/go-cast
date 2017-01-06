@@ -16,14 +16,15 @@ func Uint(v interface{}) (uint, error) {
 	}
 }
 
-func MustUint(v interface{}) (uint, error) {
+// MustUint is like Uint, expect panic()s on an error.
+func MustUint(v interface{}) uint {
 
 	x, err := Uint(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type uinter interface {

@@ -26,14 +26,15 @@ func Int64(v interface{}) (int64, error) {
 	}
 }
 
-func MustInt64(v interface{}) (int64, error) {
+// MustInt64 is like Int64, expect panic()s on an error.
+func MustInt64(v interface{}) int64 {
 
 	x, err := Int64(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type int64er interface {

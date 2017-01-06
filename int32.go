@@ -20,14 +20,15 @@ func Int32(v interface{}) (int32, error) {
 	}
 }
 
-func MustInt32(v interface{}) (int32, error) {
+// MustInt32 is like Int32, expect panic()s on an error.
+func MustInt32(v interface{}) int32 {
 
 	x, err := Int32(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type int32er interface {

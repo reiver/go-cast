@@ -20,14 +20,15 @@ func Uint64(v interface{}) (uint64, error) {
 	}
 }
 
-func MustUint64(v interface{}) (uint64, error) {
+// MustUint64 is like Uint64, expect panic()s on an error.
+func MustUint64(v interface{}) uint64 {
 
 	x, err := Uint64(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type uint64er interface {

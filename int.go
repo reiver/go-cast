@@ -22,14 +22,15 @@ func Int(v interface{}) (int, error) {
 	}
 }
 
-func MustInt(v interface{}) (int, error) {
+// MustInt is like Int, expect panic()s on an error.
+func MustInt(v interface{}) int {
 
 	x, err := Int(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type inter interface {

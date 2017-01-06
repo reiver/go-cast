@@ -16,14 +16,15 @@ func Int16(v interface{}) (int16, error) {
 	}
 }
 
-func MustInt16(v interface{}) (int16, error) {
+// MustInt16 is like Int16, expect panic()s on an error.
+func MustInt16(v interface{}) int16 {
 
 	x, err := Int16(v)
 	if nil != err {
 		panic(err)
 	}
 
-	return x, nil
+	return x
 }
 
 type int16er interface {
