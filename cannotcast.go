@@ -4,6 +4,20 @@ import (
 	"fmt"
 )
 
+// The CannotCastComplainer interface identifies an error due to a situation
+// where converting from one type to another could not be done.
+//
+// Example:
+//
+//	s, err := cast.String(v)
+//	if nil != err {
+//		switch {
+//		case cast.CannotCastComplainer:
+//			//@TODO
+//		default:
+//			//@TODO
+//		}
+//	}
 type CannotCastComplainer interface {
 	error
 	CannotCastComplainer()
