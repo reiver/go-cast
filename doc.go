@@ -1,11 +1,13 @@
 /*
 Package cast provides tools for safely converting from one type to another, without information loss.
 
-For example, you can safely convert a uint8, uint16, uint32, plus an int, int8, int16, int32, int64,
+For an example, let's look at converting to an int64.
+
+You can safely convert a uint8, uint16, uint32, plus an int, int8, int16, int32, int64,
 into an int64 without information loss.
 
-In other words, if `v` (in the following example code) is any of the types just list, then the following
-code would successfully return an int64 of the same value.
+In other words, if `v` (in the following example code) is any of the types in the list just mentioned, then the following
+code would successfully return an `int64` of the same numeric value.
 
 	i64, err := cast.Int64(v)
 
