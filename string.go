@@ -1,5 +1,32 @@
 package cast
 
+import (
+	"fmt"
+)
+
+// String converts `v` into a string, if it is of type:
+//
+//	[]byte
+//
+//	rune
+//
+//	[]rune
+//
+// 	string
+//
+// ... or of a type that fits:
+//
+//	interface {
+//		String() (string, error)
+//	}
+//
+// ... or of a type that fits:
+//
+//	interface {
+//		String() string
+//	}
+//
+// (This final interface matches fmt.Stringer.)
 func String(v interface{}) (string, error) {
 
 	switch value := v.(type) {
@@ -13,6 +40,8 @@ func String(v interface{}) (string, error) {
 		return string(value), nil
 	case stringer:
 		return value.String()
+	case fmt.Stringer:
+		return value.String(), nil
 	default:
 		return "", internalCannotCastComplainer{expectedType:"string", actualType:typeof(value)}
 	}
