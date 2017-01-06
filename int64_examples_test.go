@@ -12,7 +12,7 @@ import (
 //
 // You can think of them working like a clock or an odometer digit.
 //
-// So,with "mod 3" the sequence of numbers is:
+// So, with "mod 3" the sequence of numbers is:
 // 0, 1, 2, 0, 1, 2, 0, 1, 2, ....
 //
 // Or, in other words:
