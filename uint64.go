@@ -13,6 +13,8 @@ func Uint64(v interface{}) (uint64, error) {
 		return uint64(value), nil
 	case uint64:
 		return uint64(value), nil
+	case uint64er:
+		return value.Uint64()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"uint64", actualType:typeof(value)}
 	}
@@ -26,4 +28,8 @@ func MustUint64(v interface{}) (uint64, error) {
 	}
 
 	return x, nil
+}
+
+type uint64er interface {
+	 Uint64() (uint64, error)
 }

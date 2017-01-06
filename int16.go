@@ -9,6 +9,8 @@ func Int16(v interface{}) (int16, error) {
 		return int16(value), nil
 	case int16:
 		return int16(value), nil
+	case int16er:
+		return value.Int16()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"int16", actualType:typeof(value)}
 	}
@@ -22,4 +24,8 @@ func MustInt16(v interface{}) (int16, error) {
 	}
 
 	return x, nil
+}
+
+type int16er interface {
+	Int16() (int16, error)
 }

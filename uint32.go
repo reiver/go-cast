@@ -9,6 +9,8 @@ func Uint32(v interface{}) (uint32, error) {
 		return uint32(value), nil
 	case uint32:
 		return uint32(value), nil
+	case uint32er:
+		return value.Uint32()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"uint32", actualType:typeof(value)}
 	}
@@ -22,4 +24,8 @@ func MustUint32(v interface{}) (uint32, error) {
 	}
 
 	return x, nil
+}
+
+type uint32er interface {
+	Uint32() (uint32, error)
 }

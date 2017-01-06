@@ -15,6 +15,8 @@ func Int(v interface{}) (int, error) {
 		return int(value), nil
 	case int32:
 		return int(value), nil
+	case inter:
+		return value.Int()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"int", actualType:typeof(value)}
 	}
@@ -28,4 +30,8 @@ func MustInt(v interface{}) (int, error) {
 	}
 
 	return x, nil
+}
+
+type inter interface {
+	Int() (int, error)
 }

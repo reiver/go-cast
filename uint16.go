@@ -7,6 +7,8 @@ func Uint16(v interface{}) (uint16, error) {
 		return uint16(value), nil
 	case uint16:
 		return uint16(value), nil
+	case uint16er:
+		return value.Uint16()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"uint16", actualType:typeof(value)}
 	}
@@ -20,4 +22,8 @@ func MustUint16(v interface{}) (uint16, error) {
 	}
 
 	return x, nil
+}
+
+type uint16er interface {
+	Uint16() (uint16, error)
 }

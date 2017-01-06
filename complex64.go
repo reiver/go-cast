@@ -15,6 +15,8 @@ func Complex64(v interface{}) (complex64, error) {
 		return complex(float32(value), 0), nil
 	case int16:
 		return complex(float32(value), 0), nil
+	case complex64er:
+		return value.Complex64()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"complex64", actualType:typeof(value)}
 	}
@@ -28,4 +30,8 @@ func MustComplex64(v interface{}) (complex64, error) {
 	}
 
 	return x, nil
+}
+
+type complex64er interface {
+	Complex64() (complex64, error)
 }

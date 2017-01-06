@@ -11,6 +11,8 @@ func String(v interface{}) (string, error) {
 		return string(value), nil
 	case string:
 		return string(value), nil
+	case stringer:
+		return value.String()
 	default:
 		return "", internalCannotCastComplainer{expectedType:"string", actualType:typeof(value)}
 	}
@@ -24,4 +26,8 @@ func MustString(v interface{}) (string, error) {
 	}
 
 	return x, nil
+}
+
+type stringer interface {
+	String() (string, error)
 }

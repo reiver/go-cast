@@ -5,6 +5,8 @@ func Bool(v interface{}) (bool, error) {
 	switch value := v.(type) {
 	case bool:
 		return bool(value), nil
+	case booler:
+		return value.Bool()
 	default:
 		return false, internalCannotCastComplainer{expectedType:"bool", actualType:typeof(value)}
 	}
@@ -18,4 +20,8 @@ func MustBool(v interface{}) (bool, error) {
 	}
 
 	return x, nil
+}
+
+type booler interface {
+	Bool() (bool, error)
 }
