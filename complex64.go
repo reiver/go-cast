@@ -9,7 +9,7 @@ package cast
 // Else it will return an error.
 //
 // When float32, uint8, uint16, int8, int16, are converted to a complex64, their value goes into the "real" component
-// of the conplex number.
+// of the complex number.
 func Complex64(v interface{}) (complex64, error) {
 
 	switch value := v.(type) {
