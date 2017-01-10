@@ -25,6 +25,9 @@ code would successfully return an `int64` of the same numeric value.
 i64, err := cast.Int64(v)
 ```
 
+
+## Advanced Example
+
 In addition to these types built into Go (that were in the list), this package also supports converting
 custom types, as long as they implement a special method.
 
