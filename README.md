@@ -227,3 +227,29 @@ interface {
 	 Uint64() (uint64, error)
 }
 ```
+
+## fmt.Stringer
+
+For converting Go `string`s, the special method for converting from **custom types** is:
+```go
+interface {
+	 String() (String, error)
+}
+```
+
+This potentially conflicts with the `"fmt"` package's `fmt.Stringer` interface:
+```go
+package fmt
+
+// ...
+
+type Stringer interface {
+	String() string
+}
+```
+
+(Because these methods have the same name, a type cannot have both.)
+
+To deal with this, this package will use either of these, when trying to convert from a custom type to a `string`.
+
+**So both `String() (String, error)` and `String() string` are acceptable, to this package, for casting from a custom type to a Go `string`.**
