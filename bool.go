@@ -1,5 +1,12 @@
 package cast
 
+// Bool will return a bool when `v` is of type bool, or has a method:
+//
+//	type interface {
+//		Bool() (bool, error)
+//	}
+//
+// Else it will return an error.
 func Bool(v interface{}) (bool, error) {
 
 	switch value := v.(type) {
