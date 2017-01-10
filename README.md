@@ -34,57 +34,57 @@ b, err := cast.Bool(v)
 ```
 
 ```go
-b, err := cast.Complex64(v)
+c64, err := cast.Complex64(v)
 ```
 ```go
-b, err := cast.Complex128(v)
-```
-
-```go
-b, err := cast.Float32(v)
-```
-```go
-b, err := cast.Float64(v)
+c128, err := cast.Complex128(v)
 ```
 
 ```go
-b, err := cast.Int(v)
+f32, err := cast.Float32(v)
 ```
 ```go
-b, err := cast.Int8(v)
-```
-```go
-b, err := cast.Int16(v)
-```
-```go
-b, err := cast.Int32(v)
-```
-```go
-b, err := cast.Int64(v)
+f64, err := cast.Float64(v)
 ```
 
 ```go
-b, err := cast.String(v)
+i, err := cast.Int(v)
+```
+```go
+i8, err := cast.Int8(v)
+```
+```go
+i16, err := cast.Int16(v)
+```
+```go
+i32, err := cast.Int32(v)
+```
+```go
+i64, err := cast.Int64(v)
 ```
 
 ```go
-b, err := cast.Time(v)
+s, err := cast.String(v)
 ```
 
 ```go
-b, err := cast.Uint(v)
+t, err := cast.Time(v)
+```
+
+```go
+u, err := cast.Uint(v)
 ```
 ```go
-b, err := cast.Uint8(v)
+u8, err := cast.Uint8(v)
 ```
 ```go
-b, err := cast.Uint16(v)
+u16, err := cast.Uint16(v)
 ```
 ```go
-b, err := cast.Uint32(v)
+u32, err := cast.Uint32(v)
 ```
 ```go
-b, err := cast.Uint64(v)
+u64, err := cast.Uint64(v)
 ```
 
 ## Advanced Example
