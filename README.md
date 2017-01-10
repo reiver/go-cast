@@ -25,6 +25,67 @@ code would successfully return an `int64` of the same numeric value.
 i64, err := cast.Int64(v)
 ```
 
+## More Examples
+
+There is something similar for the other Go built-in types. I.e.,:
+
+```go
+b, err := cast.Bool(v)
+```
+
+```go
+b, err := cast.Complex64(v)
+```
+```go
+b, err := cast.Complex128(v)
+```
+
+```go
+b, err := cast.Float32(v)
+```
+```go
+b, err := cast.Float64(v)
+```
+
+```go
+b, err := cast.Int(v)
+```
+```go
+b, err := cast.Int8(v)
+```
+```go
+b, err := cast.Int16(v)
+```
+```go
+b, err := cast.Int32(v)
+```
+```go
+b, err := cast.Int64(v)
+```
+
+```go
+b, err := cast.String(v)
+```
+
+```go
+b, err := cast.Time(v)
+```
+
+```go
+b, err := cast.Uint(v)
+```
+```go
+b, err := cast.Uint8(v)
+```
+```go
+b, err := cast.Uint16(v)
+```
+```go
+b, err := cast.Uint32(v)
+```
+```go
+b, err := cast.Uint64(v)
+```
 
 ## Advanced Example
 
