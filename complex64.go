@@ -1,5 +1,15 @@
 package cast
 
+// Complex64 will return a complex64 when `v` is of type complex64, float32, uint8, uint16, int8, int16, or has a method:
+//
+//	type interface {
+//		Complex64() (complex64, error)
+//	}
+//
+// Else it will return an error.
+//
+// When float32, uint8, uint16, int8, int16, are converted to a complex64, their value goes into the "real" component
+// of the conplex number.
 func Complex64(v interface{}) (complex64, error) {
 
 	switch value := v.(type) {
