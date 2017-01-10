@@ -92,15 +92,15 @@ u64, err := cast.Uint64(v)
 In addition to supporting those Go built-in types, this package also has tools for casting with common vector types:
 
 ```go
-// [2]float
+// [2]float64
 fv2, err := cast.Float64x2(v)
 ```
 ```go
-// [3]float
+// [3]float64
 fv3, err := cast.Float64x3(v)
 ```
 ```go
-// [4]float
+// [4]float64
 fv4, err := cast.Float64x4(v)
 ```
 
