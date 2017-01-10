@@ -252,4 +252,4 @@ type Stringer interface {
 
 To deal with this, this package will use either of these, when trying to convert from a custom type to a `string`.
 
-**So both `String() (String, error)` and `String() string` are acceptable, to this package, for casting from a custom type to a Go `string`.**
+**So both `"String() (String, error)"` and `"String() string"` are acceptable, to this package, for casting from a custom type to a Go `string`.**
