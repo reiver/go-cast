@@ -89,11 +89,9 @@ u64, err := cast.Uint64(v)
 
 ## Advanced Example
 
-In addition to these types built into Go (that were in the list), this package also supports converting
-custom types, as long as they implement a special method.
+This package also supports converting from **custom types**, as long as that _custom type_ implement a special method.
 
 For int64, the special method is:
-
 ```go
 interface {
 	Int64() (int64, error)
