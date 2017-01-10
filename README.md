@@ -114,3 +114,99 @@ var v Always5
 
 i64, err := cast.Int64(v)
 ```
+
+## More Advanced Example
+
+The other special methods are:
+
+```go
+interface {
+	Bool() (bool, error)
+}
+```
+
+```go
+interface {
+	 Complex64() (complex64, error)
+}
+```
+```go
+interface {
+	 Complex128() (complex128, error)
+}
+```
+
+```go
+interface {
+	 Float32() (float32, error)
+}
+```
+```go
+interface {
+	 Float64() (float64, error)
+}
+```
+
+```go
+interface {
+	 Int() (int, error)
+}
+```
+```go
+interface {
+	 Int8() (int8, error)
+}
+```
+```go
+interface {
+	 Int16() (int16, error)
+}
+```
+```go
+interface {
+	 Int32() (int32, error)
+}
+```
+```go
+interface {
+	 Int64() (int64, error)
+}
+```
+
+```go
+interface {
+	 String() (String, error)
+}
+```
+
+```go
+interface {
+	 Time() (time.Time, error)
+}
+```
+
+```go
+interface {
+	 Uint() (uint, error)
+}
+```
+```go
+interface {
+	 Uint8() (uint8, error)
+}
+```
+```go
+interface {
+	 Uint16() (uint16, error)
+}
+```
+```go
+interface {
+	 Uint32() (uint32, error)
+}
+```
+```go
+interface {
+	 Uint64() (uint64, error)
+}
+```
