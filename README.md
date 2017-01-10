@@ -230,7 +230,7 @@ interface {
 
 ## fmt.Stringer
 
-For converting Go `string`s, the special method for converting from **custom types** is:
+For converting to a Go `string`, the special method for converting from a **custom type** is:
 ```go
 interface {
 	 String() (String, error)
