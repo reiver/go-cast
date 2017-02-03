@@ -6,10 +6,10 @@ import (
 	"testing"
 )
 
-func TestUint32FromUint8(t *testing.T) {
+func TestUint32FromUint32(t *testing.T) {
 
 	tests := []struct{
-		Value uint8
+		Value uint32
 	}{
 		{
 			Value: 0,
@@ -18,7 +18,7 @@ func TestUint32FromUint8(t *testing.T) {
 			Value: 1,
 		},
 		{
-			Value: math.MaxUint8,
+			Value: math.MaxUint32,
 		},
 	}
 
@@ -26,9 +26,9 @@ func TestUint32FromUint8(t *testing.T) {
 		const numRand = 20
 		for i:=0; i<numRand; i++ {
 			test := struct{
-				Value uint8
+				Value uint32
 			}{
-				Value: uint8(randomness.Int63n(math.MaxUint8)),
+				Value: uint32(randomness.Int63n(math.MaxUint32)),
 			}
 			tests = append(tests, test)
 		}
@@ -43,7 +43,7 @@ func TestUint32FromUint8(t *testing.T) {
 			continue
 		}
 
-		y := uint8(x)
+		y := uint32(x)
 
 		if expected, actual := test.Value, y; expected != actual {
 			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
@@ -98,10 +98,10 @@ func TestUint32FromUint16(t *testing.T) {
 	}
 }
 
-func TestUint32FromUint32(t *testing.T) {
+func TestUint32FromUint8(t *testing.T) {
 
 	tests := []struct{
-		Value uint32
+		Value uint8
 	}{
 		{
 			Value: 0,
@@ -110,7 +110,7 @@ func TestUint32FromUint32(t *testing.T) {
 			Value: 1,
 		},
 		{
-			Value: math.MaxUint32,
+			Value: math.MaxUint8,
 		},
 	}
 
@@ -118,9 +118,9 @@ func TestUint32FromUint32(t *testing.T) {
 		const numRand = 20
 		for i:=0; i<numRand; i++ {
 			test := struct{
-				Value uint32
+				Value uint8
 			}{
-				Value: uint32(randomness.Int63n(math.MaxUint32)),
+				Value: uint8(randomness.Int63n(math.MaxUint8)),
 			}
 			tests = append(tests, test)
 		}
@@ -135,7 +135,7 @@ func TestUint32FromUint32(t *testing.T) {
 			continue
 		}
 
-		y := uint32(x)
+		y := uint8(x)
 
 		if expected, actual := test.Value, y; expected != actual {
 			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
