@@ -1,6 +1,6 @@
 package cast
 
-// Int8 will return a int8 when `v` is of type int8, or has a method:
+// Int8 will return an int8 when `v` is of type int8, or has a method:
 //
 //	type interface {
 //		Int8() (bool, error)
