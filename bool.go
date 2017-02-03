@@ -6,6 +6,8 @@ package cast
 //		Bool() (bool, error)
 //	}
 //
+// .. that returns successfully.
+//
 // Else it will return an error.
 func Bool(v interface{}) (bool, error) {
 
