@@ -3,7 +3,7 @@ package cast
 // Int8 will return an int8 when `v` is of type int8, or has a method:
 //
 //	type interface {
-//		Int8() (bool, error)
+//		Int8() (int8, error)
 //	}
 //
 // ... that returns successfully.
