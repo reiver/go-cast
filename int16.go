@@ -18,6 +18,8 @@ package cast
 //		Uint8() (uint8, error)
 //	}
 //
+// ... that returns successfully.
+//
 // Else it will return an error.
 func Int16(v interface{}) (int16, error) {
 
