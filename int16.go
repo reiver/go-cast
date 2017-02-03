@@ -32,21 +32,21 @@ func Int16(v interface{}) (int16, error) {
 		return int16(value), nil
 	case int8er:
 		return func()(int16, error){
-			value, err := value.Int8()
+			casted, err := value.Int8()
 			if nil != err {
 				return 0, err
 			}
-			return int16(value), nil
+			return int16(casted), nil
 		}()
 	case uint8:
 		return int16(value), nil
 	case uint8er:
 		return func()(int16, error){
-			value, err := value.Uint8()
+			casted, err := value.Uint8()
 			if nil != err {
 				return 0, err
 			}
-			return int16(value), nil
+			return int16(casted), nil
 		}()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"int16", actualType:typeof(value)}
