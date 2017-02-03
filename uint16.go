@@ -1,14 +1,37 @@
 package cast
 
+// Uint16 will return an int16 when `v` is of type uint16, uint8 or has a method:
+//
+//      type interface {
+//              Uint16() (uint16, error)
+//      }
+//
+// ... that returns successfully, or has a method:
+//
+//      type interface {
+//              Uint8() (uint8, error)
+//      }
+//
+// ... that returns successfully.
+//
+// Else it will return an error.
 func Uint16(v interface{}) (uint16, error) {
 
 	switch value := v.(type) {
-	case uint8:
-		return uint16(value), nil
 	case uint16:
 		return uint16(value), nil
 	case uint16er:
 		return value.Uint16()
+	case uint8:
+		return uint16(value), nil
+	case uint8er:
+		return func()(uint16, error){
+			casted, err := value.Uint8()
+			if nil != err {
+				return 0, err
+			}
+			return uint16(casted), nil
+		}()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"uint16", actualType:typeof(value)}
 	}
