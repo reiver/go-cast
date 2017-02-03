@@ -219,3 +219,41 @@ func TestUint32FromUint8(t *testing.T) {
 		}
 	}
 }
+
+func TestUint32FromUint8er(t *testing.T) {
+
+	tests := []struct{
+		Value    uint8er
+		Expected uint8
+	}{
+		{
+			Value: testUint8erZero(),
+			Expected:         0,
+		},
+		{
+			Value: testUint8erOne(),
+			Expected:         1,
+		},
+		{
+			Value: testUint8erMax(),
+			Expected:    math.MaxUint8,
+		},
+	}
+
+
+	for testNumber, test := range tests {
+
+		x, err := Uint32(test.Value)
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error, but actually got one: (%T) %v", testNumber, err, err)
+			continue
+		}
+
+		y := uint8(x)
+
+		if expected, actual := test.Expected, y; expected != actual {
+			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
+			continue
+		}
+	}
+}
