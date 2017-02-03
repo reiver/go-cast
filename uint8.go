@@ -1,5 +1,14 @@
 package cast
 
+// Uint8 will return an uint8 when `v` is of type uint8, or has a method:
+//
+//	type interface {
+//		Uint8() (uint8, error)
+//	}
+//
+// ... that returns successfully.
+//
+// Else it will return an error.
 func Uint8(v interface{}) (uint8, error) {
 
 	switch value := v.(type) {
