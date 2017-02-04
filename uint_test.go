@@ -143,3 +143,51 @@ func TestUintFromUint8(t *testing.T) {
 		}
 	}
 }
+
+func TestUintFromUint(t *testing.T) {
+
+	const maxUint = ^uint(0)
+
+	tests := []struct{
+		Value uint
+	}{
+		{
+			Value: 0,
+		},
+		{
+			Value: 1,
+		},
+		{
+			Value: maxUint,
+		},
+	}
+
+	{
+		const numRand = 20
+		for i:=0; i<numRand; i++ {
+			test := struct{
+				Value uint
+			}{
+				Value: uint(randomness.Int()),
+			}
+			tests = append(tests, test)
+		}
+	}
+
+
+	for testNumber, test := range tests {
+
+		x, err := Uint(test.Value)
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error, but actually got one: (%T) %v", testNumber, err, err)
+			continue
+		}
+
+		y := uint(x)
+
+		if expected, actual := test.Value, y; expected != actual {
+			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
+			continue
+		}
+	}
+}
