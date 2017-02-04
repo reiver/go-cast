@@ -7,10 +7,10 @@ import (
 func Time(v interface{}) (time.Time, error) {
 
 	switch value := v.(type) {
-	case time.Time:
-		return time.Time(value), nil
 	case timer:
 		return value.Time()
+	case time.Time:
+		return time.Time(value), nil
 	default:
 		return time.Time{}, internalCannotCastComplainer{expectedType:"time.Time", actualType:typeof(value)}
 	}

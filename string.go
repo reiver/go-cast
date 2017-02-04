@@ -30,6 +30,10 @@ import (
 func String(v interface{}) (string, error) {
 
 	switch value := v.(type) {
+	case stringer:
+		return value.String()
+	case fmt.Stringer:
+		return value.String(), nil
 	case []byte:
 		return string(value), nil
 	case rune:
@@ -38,10 +42,6 @@ func String(v interface{}) (string, error) {
 		return string(value), nil
 	case string:
 		return string(value), nil
-	case stringer:
-		return value.String()
-	case fmt.Stringer:
-		return value.String(), nil
 	default:
 		return "", internalCannotCastComplainer{expectedType:"string", actualType:typeof(value)}
 	}
