@@ -136,6 +136,44 @@ func TestUint64FromUint32(t *testing.T) {
 	}
 }
 
+func TestUint64FromUint32er(t *testing.T) {
+
+	tests := []struct{
+		Value    uint32er
+		Expected uint32
+	}{
+		{
+			Value: testUint32erZero(),
+			Expected:          0,
+		},
+		{
+			Value: testUint32erOne(),
+			Expected:          1,
+		},
+		{
+			Value: testUint32erMax(),
+			Expected:     math.MaxUint32,
+		},
+	}
+
+
+	for testNumber, test := range tests {
+
+		x, err := Uint64(test.Value)
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error, but actually got one: (%T) %v", testNumber, err, err)
+			continue
+		}
+
+		y := uint32(x)
+
+		if expected, actual := test.Expected, y; expected != actual {
+			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
+			continue
+		}
+	}
+}
+
 func TestUint64FromUint16(t *testing.T) {
 
 	tests := []struct{
