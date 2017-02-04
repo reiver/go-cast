@@ -290,7 +290,7 @@ func TestInt64FromInt(t *testing.T) {
 
 	for testNumber, test := range tests {
 
-		x, err := Int(test.Value)
+		x, err := Int64(test.Value)
 		if nil != err {
 			t.Errorf("For test #%d, did not expect an error, but actually got one: (%T) %v", testNumber, err, err)
 			continue
