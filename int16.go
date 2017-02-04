@@ -24,12 +24,8 @@ package cast
 func Int16(v interface{}) (int16, error) {
 
 	switch value := v.(type) {
-	case int16:
-		return int16(value), nil
 	case int16er:
 		return value.Int16()
-	case int8:
-		return int16(value), nil
 	case int8er:
 		return func()(int16, error){
 			casted, err := value.Int8()
@@ -38,8 +34,6 @@ func Int16(v interface{}) (int16, error) {
 			}
 			return int16(casted), nil
 		}()
-	case uint8:
-		return int16(value), nil
 	case uint8er:
 		return func()(int16, error){
 			casted, err := value.Uint8()
@@ -48,6 +42,12 @@ func Int16(v interface{}) (int16, error) {
 			}
 			return int16(casted), nil
 		}()
+	case int16:
+		return int16(value), nil
+	case int8:
+		return int16(value), nil
+	case uint8:
+		return int16(value), nil
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"int16", actualType:typeof(value)}
 	}

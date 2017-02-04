@@ -36,8 +36,6 @@ package cast
 func Int32(v interface{}) (int32, error) {
 
 	switch value := v.(type) {
-	case int32:
-		return int32(value), nil
 	case int32er:
 		return func()(int32, error){
 			casted, err := value.Int32()
@@ -46,8 +44,6 @@ func Int32(v interface{}) (int32, error) {
 			}
 			return int32(casted), nil
 		}()
-	case int16:
-		return int32(value), nil
 	case int16er:
 		return func()(int32, error){
 			casted, err := value.Int16()
@@ -56,8 +52,6 @@ func Int32(v interface{}) (int32, error) {
 			}
 			return int32(casted), nil
 		}()
-	case int8:
-		return int32(value), nil
 	case int8er:
 		return func()(int32, error){
 			casted, err := value.Int8()
@@ -66,8 +60,6 @@ func Int32(v interface{}) (int32, error) {
 			}
 			return int32(casted), nil
 		}()
-	case uint16:
-		return int32(value), nil
 	case uint16er:
 		return func()(int32, error){
 			casted, err := value.Uint16()
@@ -76,8 +68,6 @@ func Int32(v interface{}) (int32, error) {
 			}
 			return int32(casted), nil
 		}()
-	case uint8:
-		return int32(value), nil
 	case uint8er:
 		return func()(int32, error){
 			casted, err := value.Uint8()
@@ -86,6 +76,16 @@ func Int32(v interface{}) (int32, error) {
 			}
 			return int32(casted), nil
 		}()
+	case int32:
+		return int32(value), nil
+	case int16:
+		return int32(value), nil
+	case int8:
+		return int32(value), nil
+	case uint16:
+		return int32(value), nil
+	case uint8:
+		return int32(value), nil
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"int32", actualType:typeof(value)}
 	}
