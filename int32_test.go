@@ -6,13 +6,13 @@ import (
 	"testing"
 )
 
-func TestInt32FromInt8(t *testing.T) {
+func TestInt32FromInt32(t *testing.T) {
 
 	tests := []struct{
-		Value int8
+		Value int32
 	}{
 		{
-			Value: math.MinInt8,
+			Value: math.MinInt32,
 		},
 		{
 			Value: -1,
@@ -24,7 +24,7 @@ func TestInt32FromInt8(t *testing.T) {
 			Value: 1,
 		},
 		{
-			Value: math.MaxInt8,
+			Value: math.MaxInt32,
 		},
 	}
 
@@ -32,16 +32,16 @@ func TestInt32FromInt8(t *testing.T) {
 		const numRand = 20
 		for i:=0; i<numRand; i++ {
 			test := struct{
-				Value int8
+				Value int32
 			}{
-				Value: int8(randomness.Int63n(math.MaxInt8)),
+				Value: int32(randomness.Int63n(math.MaxInt32)),
 			}
 			tests = append(tests, test)
 
 			test = struct{
-				Value int8
+				Value int32
 			}{
-				Value: -int8(randomness.Int63n(-1*math.MinInt8)),
+				Value: -int32(randomness.Int63n(-1*math.MinInt32)),
 			}
 			tests = append(tests, test)
 		}
@@ -56,7 +56,7 @@ func TestInt32FromInt8(t *testing.T) {
 			continue
 		}
 
-		y := int8(x)
+		y := int32(x)
 
 		if expected, actual := test.Value, y; expected != actual {
 			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
@@ -64,6 +64,7 @@ func TestInt32FromInt8(t *testing.T) {
 		}
 	}
 }
+
 
 func TestInt32FromInt16(t *testing.T) {
 
@@ -124,13 +125,13 @@ func TestInt32FromInt16(t *testing.T) {
 	}
 }
 
-func TestInt32FromInt32(t *testing.T) {
+func TestInt32FromInt8(t *testing.T) {
 
 	tests := []struct{
-		Value int32
+		Value int8
 	}{
 		{
-			Value: math.MinInt32,
+			Value: math.MinInt8,
 		},
 		{
 			Value: -1,
@@ -142,7 +143,7 @@ func TestInt32FromInt32(t *testing.T) {
 			Value: 1,
 		},
 		{
-			Value: math.MaxInt32,
+			Value: math.MaxInt8,
 		},
 	}
 
@@ -150,16 +151,16 @@ func TestInt32FromInt32(t *testing.T) {
 		const numRand = 20
 		for i:=0; i<numRand; i++ {
 			test := struct{
-				Value int32
+				Value int8
 			}{
-				Value: int32(randomness.Int63n(math.MaxInt32)),
+				Value: int8(randomness.Int63n(math.MaxInt8)),
 			}
 			tests = append(tests, test)
 
 			test = struct{
-				Value int32
+				Value int8
 			}{
-				Value: -int32(randomness.Int63n(-1*math.MinInt32)),
+				Value: -int8(randomness.Int63n(-1*math.MinInt8)),
 			}
 			tests = append(tests, test)
 		}
@@ -174,53 +175,7 @@ func TestInt32FromInt32(t *testing.T) {
 			continue
 		}
 
-		y := int32(x)
-
-		if expected, actual := test.Value, y; expected != actual {
-			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
-			continue
-		}
-	}
-}
-
-func TestInt32FromUint8(t *testing.T) {
-
-	tests := []struct{
-		Value uint8
-	}{
-		{
-			Value: 0,
-		},
-		{
-			Value: 1,
-		},
-		{
-			Value: math.MaxUint8,
-		},
-	}
-
-	{
-		const numRand = 20
-		for i:=0; i<numRand; i++ {
-			test := struct{
-				Value uint8
-			}{
-				Value: uint8(randomness.Int63n(math.MaxUint8)),
-			}
-			tests = append(tests, test)
-		}
-	}
-
-
-	for testNumber, test := range tests {
-
-		x, err := Int32(test.Value)
-		if nil != err {
-			t.Errorf("For test #%d, did not expect an error, but actually got one: (%T) %v", testNumber, err, err)
-			continue
-		}
-
-		y := uint8(x)
+		y := int8(x)
 
 		if expected, actual := test.Value, y; expected != actual {
 			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
@@ -267,6 +222,52 @@ func TestInt32FromUint16(t *testing.T) {
 		}
 
 		y := uint16(x)
+
+		if expected, actual := test.Value, y; expected != actual {
+			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
+			continue
+		}
+	}
+}
+
+func TestInt32FromUint8(t *testing.T) {
+
+	tests := []struct{
+		Value uint8
+	}{
+		{
+			Value: 0,
+		},
+		{
+			Value: 1,
+		},
+		{
+			Value: math.MaxUint8,
+		},
+	}
+
+	{
+		const numRand = 20
+		for i:=0; i<numRand; i++ {
+			test := struct{
+				Value uint8
+			}{
+				Value: uint8(randomness.Int63n(math.MaxUint8)),
+			}
+			tests = append(tests, test)
+		}
+	}
+
+
+	for testNumber, test := range tests {
+
+		x, err := Int32(test.Value)
+		if nil != err {
+			t.Errorf("For test #%d, did not expect an error, but actually got one: (%T) %v", testNumber, err, err)
+			continue
+		}
+
+		y := uint8(x)
 
 		if expected, actual := test.Value, y; expected != actual {
 			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
