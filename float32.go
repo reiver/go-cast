@@ -3,6 +3,8 @@ package cast
 func Float32(v interface{}) (float32, error) {
 
 	switch value := v.(type) {
+	case float32er:
+		return value.Float32()
 	case float32:
 		return float32(value), nil
 	case uint8:
@@ -13,8 +15,6 @@ func Float32(v interface{}) (float32, error) {
 		return float32(value), nil
 	case int16:
 		return float32(value), nil
-	case float32er:
-		return value.Float32()
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"float32", actualType:typeof(value)}
 	}
