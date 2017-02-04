@@ -146,8 +146,6 @@ func TestUintFromUint8(t *testing.T) {
 
 func TestUintFromUint(t *testing.T) {
 
-	const maxUint = ^uint(0)
-
 	tests := []struct{
 		Value uint
 	}{

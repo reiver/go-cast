@@ -245,9 +245,6 @@ func TestInt64FromInt8(t *testing.T) {
 
 func TestInt64FromInt(t *testing.T) {
 
-	const maxInt int = int((^uint(0)) >> 1)
-	const minInt int = -maxInt - 1
-
 	tests := []struct{
 		Value int
 	}{

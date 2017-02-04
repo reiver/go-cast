@@ -185,9 +185,6 @@ func TestIntFromInt8(t *testing.T) {
 
 func TestIntFromInt(t *testing.T) {
 
-	const maxInt = int((^uint(0)) >> 1)
-	const minInt = -maxInt - 1
-
 	tests := []struct{
 		Value int
 	}{

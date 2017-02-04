@@ -21,8 +21,6 @@ func testUinterMax() testUinter {
 }
 
 func (receiver testUinter) Uint() (uint, error) {
-	const maxUint = ^uint(0)
-
 	switch receiver.value {
 	case "zero":
 		return 0, nil

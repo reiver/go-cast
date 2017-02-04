@@ -344,8 +344,6 @@ func TestUint64FromUint8er(t *testing.T) {
 
 func TestUint64FromUint(t *testing.T) {
 
-	const maxUint = ^uint(0)
-
 	tests := []struct{
 		Value uint
 	}{
@@ -391,8 +389,6 @@ func TestUint64FromUint(t *testing.T) {
 }
 
 func TestUint64FromUinter(t *testing.T) {
-
-	const maxUint = ^uint(0)
 
 	tests := []struct{
 		Value    uinter
