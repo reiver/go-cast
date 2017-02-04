@@ -36,12 +36,8 @@ package cast
 func Uint64(v interface{}) (uint64, error) {
 
 	switch value := v.(type) {
-	case uint64:
-		return uint64(value), nil
 	case uint64er:
 		return value.Uint64()
-	case uint32:
-		return uint64(value), nil
 	case uint32er:
 		return func()(uint64, error){
 			casted, err := value.Uint32()
@@ -50,18 +46,6 @@ func Uint64(v interface{}) (uint64, error) {
 			}
 			return uint64(casted), nil
 		}()
-	case uint:
-		return uint64(value), nil
-	case uinter:
-		return func()(uint64, error) {
-			casted, err := value.Uint()
-			if nil != err {
-				return 0, err
-			}
-			return uint64(casted), nil
-		}()
-	case uint16:
-		return uint64(value), nil
 	case uint16er:
 		return func()(uint64, error){
 			casted, err := value.Uint16()
@@ -70,8 +54,6 @@ func Uint64(v interface{}) (uint64, error) {
 			}
 			return uint64(casted), nil
 		}()
-	case uint8:
-		return uint64(value), nil
 	case uint8er:
 		return func()(uint64, error){
 			casted, err := value.Uint8()
@@ -80,6 +62,24 @@ func Uint64(v interface{}) (uint64, error) {
 			}
 			return uint64(casted), nil
 		}()
+	case uinter:
+		return func()(uint64, error) {
+			casted, err := value.Uint()
+			if nil != err {
+				return 0, err
+			}
+			return uint64(casted), nil
+		}()
+	case uint64:
+		return uint64(value), nil
+	case uint32:
+		return uint64(value), nil
+	case uint16:
+		return uint64(value), nil
+	case uint8:
+		return uint64(value), nil
+	case uint:
+		return uint64(value), nil
 	default:
 		return 0, internalCannotCastComplainer{expectedType:"uint64", actualType:typeof(value)}
 	}
