@@ -4,19 +4,16 @@ import (
 	"testing"
 )
 
-func TestBoolFromBooler(t *testing.T) {
+func TestBoolFromBool(t *testing.T) {
 
 	tests := []struct{
-		Value    booler
-		Expected bool
+		Value bool
 	}{
 		{
-			Value: testBoolerFalse(),
-			Expected:        false,
+			Value: false,
 		},
 		{
-			Value: testBoolerTrue(),
-			Expected:        true,
+			Value: true,
 		},
 	}
 
@@ -31,7 +28,7 @@ func TestBoolFromBooler(t *testing.T) {
 
 		y := bool(x)
 
-		if expected, actual := test.Expected, y; expected != actual {
+		if expected, actual := test.Value, y; expected != actual {
 			t.Errorf("For test #%d, expected %v, but actually got %v.", testNumber, expected, actual)
 			continue
 		}
