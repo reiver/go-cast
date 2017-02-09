@@ -6,10 +6,10 @@ import (
 	"testing"
 )
 
-func TestFloat64FromUint8(t *testing.T) {
+func TestFloat64FromUint16(t *testing.T) {
 
 	tests := []struct{
-		Value uint8
+		Value uint16
 	}{
 		{
 			Value: 0,
@@ -18,7 +18,7 @@ func TestFloat64FromUint8(t *testing.T) {
 			Value: 1,
 		},
 		{
-			Value: math.MaxUint8,
+			Value: math.MaxUint16,
 		},
 	}
 
@@ -26,9 +26,9 @@ func TestFloat64FromUint8(t *testing.T) {
 		const numRand = 20
 		for i:=0; i<numRand; i++ {
 			test := struct{
-				Value uint8
+				Value uint16
 			}{
-				Value: uint8(randomness.Int63n(math.MaxUint8)),
+				Value: uint16(randomness.Int63n(math.MaxUint16)),
 			}
 			tests = append(tests, test)
 		}
@@ -43,7 +43,7 @@ func TestFloat64FromUint8(t *testing.T) {
 			continue
 		}
 
-		y := uint8(x)
+		y := uint16(x)
 
 		if expected, actual := test.Value, y; expected != actual {
 			if !(math.IsNaN(float64(expected)) && math.IsNaN(float64(actual))) {
