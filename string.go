@@ -23,6 +23,12 @@ import (
 // ... or of a type that fits:
 //
 //	interface {
+//		String() (string, bool)
+//	}
+//
+// ... or of a type that fits:
+//
+//	interface {
 //		String() string
 //	}
 //
@@ -30,8 +36,14 @@ import (
 func String(v interface{}) (string, error) {
 
 	switch value := v.(type) {
-	case stringer:
+	case errStringer:
 		return value.String()
+	case boolStringer:
+		x, casted := value.String()
+		if !casted {
+			return "", errNotCasted
+		}
+		return x, nil
 	case fmt.Stringer:
 		return value.String(), nil
 	case []byte:
@@ -58,6 +70,10 @@ func MustString(v interface{}) string {
 	return x
 }
 
-type stringer interface {
+type errStringer interface {
 	String() (string, error)
+}
+
+type boolStringer interface {
+	String() (string, bool)
 }
