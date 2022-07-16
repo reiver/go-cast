@@ -6,7 +6,9 @@ import (
 
 	"bytes"
 	"database/sql"
+	"io"
 	"reflect"
+	"strings"
 
 	"testing"
 )
@@ -125,6 +127,28 @@ func TestSetString(t *testing.T) {
 	}
 
 	for testNumber, test := range tests {
+
+		{
+			var buffer strings.Builder
+			var dst io.Writer = &buffer
+
+			err := cast.SetString(dst, test.Src)
+			if nil != err {
+				t.Errorf("For test #%d, did not expect an error, but actually got one.", testNumber)
+				t.Logf("ERROR: (%T) %v", err, err)
+				continue
+			}
+
+			var expected string = test.Src
+			var actual   string = buffer.String()
+
+			if expected != actual {
+				t.Errorf("For test #%d, actual value is not what was expected.", testNumber)
+				t.Logf("EXPECTED: %#v", expected)
+				t.Logf("ACTUAL:   %#v", actual)
+				continue
+			}
+		}
 
 		{
 			var actual stringlike.Setter

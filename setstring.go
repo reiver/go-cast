@@ -3,6 +3,7 @@ package cast
 import (
 	"database/sql"
 	"fmt"
+	"io"
 )
 
 // SetString uses cast.String() to try to convert `src` into a string, and then (if successful) tries to assign that string to `dst` if `dst` is of type:
@@ -62,15 +63,13 @@ func SetString(dst any, src any) error {
 		const srcType = "string"
 
 		switch casted := dst.(type) {
-		case stringSetter:
-			casted.SetString(value)
 		case errableStringSetter:
 			e := casted.SetString(value)
 			if nil != e {
 				err = internalCouldNotSetComplainer{
 					srcType:srcType,
 					dstType:"interface{SetString(string)error}",
-					err:err,
+					err:e,
 				}
 			}
 		case fallibleStringSetter:
@@ -82,13 +81,31 @@ func SetString(dst any, src any) error {
 					err:errNotOK,
 				}
 			}
+		case stringSetter:
+			casted.SetString(value)
+		case io.Writer:
+			n, e := io.WriteString(casted, value)
+			switch {
+			case nil != err:
+				err = internalCouldNotSetComplainer{
+					srcType:srcType,
+					dstType:"interface{Write([]byte)(int,error)}",
+					err:e,
+				}
+			case n != len(value):
+				err = internalCouldNotSetComplainer{
+					srcType:srcType,
+					dstType:"interface{Write([]byte)(int,error)}",
+					err:fmt.Errorf("expected to write %d bytes but actually wrote %d bytes", len(value), n),
+				}
+			}
 		case flagStringSetter:
 			e := casted.Set(value)
 			if nil != e {
 				err = internalCouldNotSetComplainer{
 					srcType:srcType,
 					dstType:"interface{Set(string)error}",
-					err:err,
+					err:e,
 				}
 			}
 		case sql.Scanner:
@@ -97,7 +114,7 @@ func SetString(dst any, src any) error {
 				err = internalCouldNotSetComplainer{
 					srcType:srcType,
 					dstType:"interface{Scan(any)error}",
-					err:err,
+					err:e,
 				}
 			}
 		case *string:
