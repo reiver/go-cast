@@ -1,9 +1,11 @@
 package cast
 
 import (
-	"errors"
+	"github.com/reiver/go-fck"
 )
 
-var (
-	errNotCasted = errors.New("not casted")
+const (
+	errNilPointer = fck.Error("nil pointer")
+	errNotCasted  = fck.Error("not casted")
+	errNotOK      = fck.Error("not ok")
 )
