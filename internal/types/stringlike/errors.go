@@ -1,9 +1,9 @@
 package stringlike
 
 import (
-	"github.com/reiver/go-fck"
+	"github.com/reiver/go-erorr"
 )
 
 const (
-	errNilReceiver = fck.Error("nil receiver")
+	errNilReceiver = erorr.Error("cast: nil receiver")
 )

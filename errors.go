@@ -1,11 +1,11 @@
 package cast
 
 import (
-	"github.com/reiver/go-fck"
+	"github.com/reiver/go-erorr"
 )
 
 const (
-	errNilPointer = fck.Error("nil pointer")
-	errNotCasted  = fck.Error("not casted")
-	errNotOK      = fck.Error("not ok")
+	errNilPointer = erorr.Error("cast: nil pointer")
+	errNotCasted  = erorr.Error("cast: not casted")
+	errNotOK      = erorr.Error("cast: not ok")
 )
