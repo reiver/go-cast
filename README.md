@@ -253,3 +253,21 @@ type Stringer interface {
 To deal with this, this package will use either of these, when trying to convert from a custom type to a `string`.
 
 **So both `"String() (String, error)"` and `"String() string"` are acceptable, to this package, for casting from a custom type to a Go `string`.**
+
+## Import
+
+To import package **cast** use `import` code like the follownig:
+```
+import "github.com/reiver/go-cast"
+```
+
+## Installation
+
+To install package **cast** do the following:
+```
+GOPROXY=direct go get https://github.com/reiver/go-cast
+```
+
+## Author
+
+Package **cast** was written by [Charles Iliya Krempeaux](http://reiver.link)
