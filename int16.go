@@ -53,6 +53,15 @@ func Int16(v any) (int16, error) {
 	}
 }
 
+// Int16Else is similar to [Int16] except that if a cast cannot be done, it returns the `alternative`.
+func Int16Else(v any, alternative int16) int16 {
+	result, err := Int16(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustInt16 is like Int16, expect panic()s on an error.
 func MustInt16(v any) int16 {
 

@@ -85,6 +85,15 @@ func Float32(v any) (float32, error) {
 	}
 }
 
+// Float32Else is similar to [Float32] except that if a cast cannot be done, it returns the `alternative`.
+func Float32Else(v any, alternative float32) float32 {
+	result, err := Float32(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustFloat32 is like Float32, expect panic()s on an error.
 func MustFloat32(v any) float32 {
 

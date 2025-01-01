@@ -59,6 +59,15 @@ func String(v any) (string, error) {
 	}
 }
 
+// StringElse is similar to [String] except that if a cast cannot be done, it returns the `alternative`.
+func StringElse(v any, alternative string) string {
+	result, err := String(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustString is like String, expect panic()s on an error.
 func MustString(v any) string {
 

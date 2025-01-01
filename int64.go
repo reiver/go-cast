@@ -133,6 +133,15 @@ func Int64(v any) (int64, error) {
 	}
 }
 
+// Int64Else is similar to [Int64] except that if a cast cannot be done, it returns the `alternative`.
+func Int64Else(v any, alternative int64) int64 {
+	result, err := Int64(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustInt64 is like Int64, expect panic()s on an error.
 func MustInt64(v any) int64 {
 

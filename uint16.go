@@ -37,6 +37,15 @@ func Uint16(v any) (uint16, error) {
 	}
 }
 
+// Uint16Else is similar to [Uint16] except that if a cast cannot be done, it returns the `alternative`.
+func Uint16Else(v any, alternative uint16) uint16 {
+	result, err := Uint16(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustUint16 is like Uint16, expect panic()s on an error.
 func MustUint16(v any) uint16 {
 

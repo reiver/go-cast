@@ -53,6 +53,15 @@ func Uint32(v any) (uint32, error) {
 	}
 }
 
+// Uint32Else is similar to [Uint32] except that if a cast cannot be done, it returns the `alternative`.
+func Uint32Else(v any, alternative uint32) uint32 {
+	result, err := Uint32(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustUint32 is like Uint32, expect panic()s on an error.
 func MustUint32(v any) uint32 {
 

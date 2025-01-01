@@ -85,6 +85,15 @@ func Uint64(v any) (uint64, error) {
 	}
 }
 
+// Uint64Else is similar to [Uint64] except that if a cast cannot be done, it returns the `alternative`.
+func Uint64Else(v any, alternative uint64) uint64 {
+	result, err := Uint64(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustUint64 is like Uint64, expect panic()s on an error.
 func MustUint64(v any) uint64 {
 

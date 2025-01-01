@@ -70,6 +70,15 @@ func Uint(v any) (uint, error) {
 	}
 }
 
+// UintElse is similar to [Uint] except that if a cast cannot be done, it returns the `alternative`.
+func UintElse(v any, alternative uint) uint {
+	result, err := Uint(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustUint is like Uint, expect panic()s on an error.
 func MustUint(v any) uint {
 

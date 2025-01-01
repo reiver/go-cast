@@ -32,6 +32,15 @@ func Complex64(v any) (complex64, error) {
 	}
 }
 
+// Complex64Else is similar to [Complex64] except that if a cast cannot be done, it returns the `alternative`.
+func Complex64Else(v any, alternative complex64) complex64 {
+	result, err := Complex64(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustComplex64 is like Complex64, expect panic()s on an error.
 func MustComplex64(v any) complex64 {
 

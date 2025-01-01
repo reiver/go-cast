@@ -101,6 +101,15 @@ func Int(v any) (int, error) {
 	}
 }
 
+// IntElse is similar to [Int] except that if a cast cannot be done, it returns the `alternative`.
+func IntElse(v any, alternative int) int {
+	result, err := Int(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustInt is like Int, expect panic()s on an error.
 func MustInt(v any) int {
 

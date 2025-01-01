@@ -21,6 +21,15 @@ func Int8(v any) (int8, error) {
 	}
 }
 
+// Int8Else is similar to [Int8] except that if a cast cannot be done, it returns the `alternative`.
+func Int8Else(v any, alternative int8) int8 {
+	result, err := Int8(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustInt8 is like Int8, expect panic()s on an error.
 func MustInt8(v any) int8 {
 

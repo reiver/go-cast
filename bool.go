@@ -21,6 +21,15 @@ func Bool(v any) (bool, error) {
 	}
 }
 
+// BoolElse is similar to [Bool] except that if a cast cannot be done, it returns the `alternative`.
+func BoolElse(v any, alternative bool) bool {
+	result, err := Bool(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustBool is like Bool, expect panic()s on an error.
 func MustBool(v any) bool {
 

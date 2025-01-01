@@ -91,6 +91,15 @@ func Int32(v any) (int32, error) {
 	}
 }
 
+// Int32Else is similar to [Int32] except that if a cast cannot be done, it returns the `alternative`.
+func Int32Else(v any, alternative int32) int32 {
+	result, err := Int32(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustInt32 is like Int32, expect panic()s on an error.
 func MustInt32(v any) int32 {
 

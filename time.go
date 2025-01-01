@@ -16,6 +16,14 @@ func Time(v any) (time.Time, error) {
 	}
 }
 
+// TimeElse is similar to [Time] except that if a cast cannot be done, it returns the `alternative`.
+func TimeElse(v any, alternative time.Time) time.Time {
+	result, err := Time(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
 // MustTime is like Time, expect panic()s on an error.
 func MustTime(v any) time.Time {
 

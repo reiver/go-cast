@@ -133,6 +133,15 @@ func Float64(v any) (float64, error) {
 	}
 }
 
+// Float64Else is similar to [Float64] except that if a cast cannot be done, it returns the `alternative`.
+func Float64Else(v any, alternative float64) float64 {
+	result, err := Float64(v)
+	if nil != err {
+		return alternative
+	}
+	return result
+}
+
 // MustFloat64 is like Float64, expect panic()s on an error.
 func MustFloat64(v any) float64 {
 
