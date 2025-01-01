@@ -33,7 +33,7 @@ import (
 //	}
 //
 // (This final interface matches fmt.Stringer.)
-func String(v interface{}) (string, error) {
+func String(v any) (string, error) {
 
 	switch value := v.(type) {
 	case errStringer:
@@ -60,7 +60,7 @@ func String(v interface{}) (string, error) {
 }
 
 // MustString is like String, expect panic()s on an error.
-func MustString(v interface{}) string {
+func MustString(v any) string {
 
 	x, err := String(v)
 	if nil != err {

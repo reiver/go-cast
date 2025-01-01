@@ -33,7 +33,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Int32(v interface{}) (int32, error) {
+func Int32(v any) (int32, error) {
 
 	switch value := v.(type) {
 	case int32er:
@@ -92,7 +92,7 @@ func Int32(v interface{}) (int32, error) {
 }
 
 // MustInt32 is like Int32, expect panic()s on an error.
-func MustInt32(v interface{}) int32 {
+func MustInt32(v any) int32 {
 
 	x, err := Int32(v)
 	if nil != err {

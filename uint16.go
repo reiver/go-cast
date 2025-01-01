@@ -15,7 +15,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Uint16(v interface{}) (uint16, error) {
+func Uint16(v any) (uint16, error) {
 
 	switch value := v.(type) {
 	case uint16er:
@@ -38,7 +38,7 @@ func Uint16(v interface{}) (uint16, error) {
 }
 
 // MustUint16 is like Uint16, expect panic()s on an error.
-func MustUint16(v interface{}) uint16 {
+func MustUint16(v any) uint16 {
 
 	x, err := Uint16(v)
 	if nil != err {

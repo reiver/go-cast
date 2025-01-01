@@ -39,7 +39,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Int(v interface{}) (int, error) {
+func Int(v any) (int, error) {
 
 	switch value := v.(type) {
 	case inter:
@@ -102,7 +102,7 @@ func Int(v interface{}) (int, error) {
 }
 
 // MustInt is like Int, expect panic()s on an error.
-func MustInt(v interface{}) int {
+func MustInt(v any) int {
 
 	x, err := Int(v)
 	if nil != err {

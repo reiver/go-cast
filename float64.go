@@ -51,7 +51,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Float64(v interface{}) (float64, error) {
+func Float64(v any) (float64, error) {
 
 	switch value := v.(type) {
 	case float64er:
@@ -134,7 +134,7 @@ func Float64(v interface{}) (float64, error) {
 }
 
 // MustFloat64 is like Float64, expect panic()s on an error.
-func MustFloat64(v interface{}) float64 {
+func MustFloat64(v any) float64 {
 
 	x, err := Float64(v)
 	if nil != err {

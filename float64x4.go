@@ -1,6 +1,6 @@
 package cast
 
-func Float64x4(v interface{}) ([4]float64, error) {
+func Float64x4(v any) ([4]float64, error) {
 
 	switch value := v.(type) {
 	case float64x4er:
@@ -15,7 +15,7 @@ func Float64x4(v interface{}) ([4]float64, error) {
 }
 
 // MustFloat64x4 is like Float64x4, expect panic()s on an error.
-func MustFloat64x4(v interface{}) [4]float64 {
+func MustFloat64x4(v any) [4]float64 {
 
 	x, err := Float64x4(v)
 	if nil != err {

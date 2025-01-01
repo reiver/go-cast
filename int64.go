@@ -51,7 +51,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Int64(v interface{}) (int64, error) {
+func Int64(v any) (int64, error) {
 
 	switch value := v.(type) {
 	case int64er:
@@ -134,7 +134,7 @@ func Int64(v interface{}) (int64, error) {
 }
 
 // MustInt64 is like Int64, expect panic()s on an error.
-func MustInt64(v interface{}) int64 {
+func MustInt64(v any) int64 {
 
 	x, err := Int64(v)
 	if nil != err {

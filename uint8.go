@@ -9,7 +9,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Uint8(v interface{}) (uint8, error) {
+func Uint8(v any) (uint8, error) {
 
 	switch value := v.(type) {
 	case uint8er:
@@ -22,7 +22,7 @@ func Uint8(v interface{}) (uint8, error) {
 }
 
 // MustUint8 is like Uint8, expect panic()s on an error.
-func MustUint8(v interface{}) uint8 {
+func MustUint8(v any) uint8 {
 
 	x, err := Uint8(v)
 	if nil != err {

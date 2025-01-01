@@ -4,7 +4,7 @@ import (
 	"time"
 )
 
-func Time(v interface{}) (time.Time, error) {
+func Time(v any) (time.Time, error) {
 
 	switch value := v.(type) {
 	case timer:
@@ -17,7 +17,7 @@ func Time(v interface{}) (time.Time, error) {
 }
 
 // MustTime is like Time, expect panic()s on an error.
-func MustTime(v interface{}) time.Time {
+func MustTime(v any) time.Time {
 
 	x, err := Time(v)
 	if nil != err {

@@ -5,6 +5,6 @@ import (
 )
 
 // typeof returns a string containing the naame of the type of `v`.
-func typeof(v interface{}) string {
+func typeof(v any) string {
 	return fmt.Sprintf("%T", v)
 }

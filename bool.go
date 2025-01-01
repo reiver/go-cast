@@ -9,7 +9,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Bool(v interface{}) (bool, error) {
+func Bool(v any) (bool, error) {
 
 	switch value := v.(type) {
 	case bool:
@@ -22,7 +22,7 @@ func Bool(v interface{}) (bool, error) {
 }
 
 // MustBool is like Bool, expect panic()s on an error.
-func MustBool(v interface{}) bool {
+func MustBool(v any) bool {
 
 	x, err := Bool(v)
 	if nil != err {

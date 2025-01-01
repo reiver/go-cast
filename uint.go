@@ -28,7 +28,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Uint(v interface{}) (uint, error) {
+func Uint(v any) (uint, error) {
 
 	switch value := v.(type) {
 	case uinter:
@@ -71,7 +71,7 @@ func Uint(v interface{}) (uint, error) {
 }
 
 // MustUint is like Uint, expect panic()s on an error.
-func MustUint(v interface{}) uint {
+func MustUint(v any) uint {
 
 	x, err := Uint(v)
 	if nil != err {

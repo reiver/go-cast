@@ -1,6 +1,6 @@
 package cast
 
-func Complex128(v interface{}) (complex128, error) {
+func Complex128(v any) (complex128, error) {
 
 	switch value := v.(type) {
 	case complex64:
@@ -27,7 +27,7 @@ func Complex128(v interface{}) (complex128, error) {
 }
 
 // MustComplex128 is like Complex128, expect panic()s on an error.
-func MustComplex128(v interface{}) complex128 {
+func MustComplex128(v any) complex128 {
 
 	x, err := Complex128(v)
 	if nil != err {

@@ -21,7 +21,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Uint32(v interface{}) (uint32, error) {
+func Uint32(v any) (uint32, error) {
 
 	switch value := v.(type) {
 	case uint32er:
@@ -54,7 +54,7 @@ func Uint32(v interface{}) (uint32, error) {
 }
 
 // MustUint32 is like Uint32, expect panic()s on an error.
-func MustUint32(v interface{}) uint32 {
+func MustUint32(v any) uint32 {
 
 	x, err := Uint32(v)
 	if nil != err {

@@ -33,7 +33,7 @@ package cast
 // ... that returns successfully.
 //
 // Else it will return an error.
-func Float32(v interface{}) (float32, error) {
+func Float32(v any) (float32, error) {
 
 	switch value := v.(type) {
 	case float32er:
@@ -86,7 +86,7 @@ func Float32(v interface{}) (float32, error) {
 }
 
 // MustFloat32 is like Float32, expect panic()s on an error.
-func MustFloat32(v interface{}) float32 {
+func MustFloat32(v any) float32 {
 
 	x, err := Float32(v)
 	if nil != err {
