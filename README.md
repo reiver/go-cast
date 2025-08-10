@@ -265,7 +265,7 @@ import "github.com/reiver/go-cast"
 
 To install package **cast** do the following:
 ```
-GOPROXY=direct go get https://github.com/reiver/go-cast
+GOPROXY=direct go get github.com/reiver/go-cast
 ```
 
 ## Author
